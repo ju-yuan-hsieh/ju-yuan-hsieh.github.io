@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>謝如媛 Ju-Yuan Hsieh | 個人學術網站</title>
+  <style>
+    :root {
+      --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      --color-primary: #1c2b39;
+      --color-accent: #2b5b84;
+      --color-accent-hover: #1e3f5d;
+      --color-text: #333333;
+      --color-muted: #666666;
+      --color-bg-light: #f7f9fa;
+      --color-border: #e6ebf0;
+      --badge-tssci: #0077b6;
+      --badge-cinii: #475569;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-main);
+      color: var(--color-text);
+      background-color: #ffffff;
+      line-height: 1.75;
+      font-size: 15.5px;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    a:hover {
+      color: var(--color-accent-hover);
+      text-decoration: underline;
+    }
+
+    /* Header & Navigation */
+    header.weebly-header {
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      border-bottom: 1px solid var(--color-border);
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--color-primary);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-name span.sub-title {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--color-muted);
+      letter-spacing: 0.02em;
+    }
+
+    nav ul.nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 1.3rem;
+      align-items: center;
+    }
+    nav ul.nav-menu li a {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: #4a5568;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      padding: 0.3rem 0;
+      position: relative;
+    }
+    nav ul.nav-menu li a:hover {
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+
+    .lang-toggle-btn {
+      border: 1px solid #cbd5e1;
+      background: transparent;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.82rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--color-accent);
+      transition: all 0.2s;
+    }
+    .lang-toggle-btn:hover {
+      background: var(--color-accent);
+      color: #ffffff;
+      border-color: var(--color-accent);
+    }
+
+    /* Page Container */
+    .page-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem 1.5rem;
+    }
+
+    /* Hero Profile Card */
+    .weebly-hero-card {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      padding: 2.5rem 0 3rem 0;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 3rem;
+    }
+    .hero-photo-wrapper {
+      width: 220px !important;
+      height: 290px !important;
+      max-width: 220px !important;
+      flex: 0 0 220px !important;
+      align-self: center !important;
+      background: #eef2f6;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      margin: 0 auto;
+      position: relative;
+    }
+    .hero-photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+    }
+    .hero-text {
+      flex: 1;
+    }
+    .hero-text h1 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 0.3rem;
+    }
+    .hero-text .affiliation {
+      font-size: 1.12rem;
+      color: var(--color-accent);
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+    .hero-text .bio {
+      color: #374151;
+      font-size: 1.02rem;
+      line-height: 1.85;
+    }
+
+    /* Sections */
+    section.weebly-section {
+      margin-bottom: 3.5rem;
+    }
+    h2.section-header {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.8rem;
+      border-bottom: 2px solid var(--color-primary);
+      display: inline-block;
+    }
+    h3.sub-header {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin: 1.8rem 0 1rem 0;
+      padding-left: 0.5rem;
+      border-left: 3px solid var(--color-accent);
+    }
+
+    /* Course Badges */
+    .course-badge-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 0.6rem;
+    }
+    .course-badge {
+      background: var(--color-bg-light);
+      border: 1px solid #dbe2ea;
+      color: #243447;
+      padding: 0.45rem 0.95rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    /* Timeline Style */
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.8rem;
+    }
+    .timeline-table tr {
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .timeline-table tr:last-child {
+      border-bottom: none;
+    }
+    .timeline-table td {
+      padding: 0.85rem 0;
+      vertical-align: top;
+    }
+    .timeline-table td.year-col {
+      width: 140px;
+      font-weight: 600;
+      color: var(--color-accent);
+      font-size: 0.95rem;
+    }
+    .timeline-table td.desc-col strong {
+      display: block;
+      color: #1e293b;
+      font-size: 0.98rem;
+    }
+    .timeline-table td.desc-col span {
+      color: var(--color-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Publications List Style */
+    .pub-entry {
+      padding: 0.85rem 0 0.85rem 1.8rem;
+      position: relative;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 0.96rem;
+      line-height: 1.68;
+    }
+    .pub-entry:last-child {
+      border-bottom: none;
+    }
+    .pub-entry::before {
+      content: "▪";
+      position: absolute;
+      left: 0.4rem;
+      color: var(--color-accent);
+    }
+    .pub-year {
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-right: 0.35rem;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      padding: 0.12rem 0.5rem;
+      border-radius: 3px;
+      margin-left: 0.5rem;
+      font-weight: 600;
+      vertical-align: middle;
+      letter-spacing: 0.02em;
+    }
+    .badge-tssci {
+      background: #e0f2fe;
+      color: var(--badge-tssci);
+      border: 1px solid #bae6fd;
+    }
+    .badge-cinii {
+      background: #f1f5f9;
+      color: var(--badge-cinii);
+      border: 1px solid #cbd5e1;
+    }
+
+    /* Contact Cards */
+    .contact-card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.4rem;
+      margin-top: 1rem;
+    }
+    .contact-card {
+      background: var(--color-bg-light);
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      padding: 1.4rem;
+    }
+    .contact-card h4 {
+      font-size: 1rem;
+      color: var(--color-primary);
+      margin-bottom: 0.6rem;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 0.4rem;
+    }
+    .contact-card p {
+      font-size: 0.92rem;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer.weebly-footer {
+      background: #f8fafc;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+      padding: 2.5rem 1rem;
+      font-size: 0.88rem;
+      color: var(--color-muted);
+    }
+
+    .en-view { display: none; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-container { flex-direction: column; gap: 1rem; }
+      nav ul.nav-menu { flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
+      .weebly-hero-card { 
+        flex-direction: column !important; 
+        text-align: center !important; 
+        align-items: center !important; 
+        gap: 1.5rem !important; 
+      }
+      .hero-photo-wrapper { 
+        width: 200px !important;
+        height: 270px !important;
+        flex: 0 0 270px !important;
+        margin: 0 auto !important; 
+      }
+      .timeline-table td.year-col { width: 100px; }
+      .course-badge-grid { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部導覽列 -->
+  <header class="weebly-header">
+    <div class="nav-container">
+      <a href="#" class="brand-name">
+        <span class="zh-view">謝如媛</span>
+        <span class="en-view">Ju-Yuan Hsieh</span>
+        <span class="sub-title zh-view">國立政治大學法學院</span>
+        <span class="sub-title en-view">College of Law, NCCU</span>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#about" class="nav-link" data-zh="簡介" data-en="About">簡介</a></li>
+          <li><a href="#experience" class="nav-link" data-zh="學經歷" data-en="CV">學經歷</a></li>
+          <li><a href="#courses" class="nav-link" data-zh="授課課程" data-en="Courses">授課課程</a></li>
+          <li><a href="#publications" class="nav-link" data-zh="著作出版" data-en="Publications">著作出版</a></li>
+          <li><a href="#theses" class="nav-link" data-zh="指導論文" data-en="Theses">指導論文</a></li>
+          <li><a href="#contact" class="nav-link" data-zh="聯絡資訊" data-en="Contact">聯絡資訊</a></li>
+          <li><button class="lang-toggle-btn" onclick="toggleLanguage()">Switch to English</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-container">
+
+    <!-- 首頁簡介 Profile 區塊 -->
+    <div class="weebly-hero-card" id="about">
+      <div class="hero-photo-wrapper">
+        <img src="hsieh_avatar.jpg" alt="謝如媛 Ju-Yuan Hsieh">
+      </div>
+      <div class="hero-text">
+        <div class="zh-view">
+          <h1>謝如媛</h1>
+          <div class="affiliation">國立政治大學法學院 教授</div>
+          <p class="bio">
+            謝如媛教授，主要研究領域為刑事政策，特別是少年法、修復式司法、犯罪人處遇，講授科目有刑事實體法、刑事政策、少年法、犯罪學與日文法學名著選讀相關課程，同時於台日均有學術作品發表並與實務工作者交流。
+          </p>
+        </div>
+        <div class="en-view">
+          <h1>Ju-Yuan Hsieh</h1>
+          <div class="affiliation">Professor, College of Law, National Chengchi University</div>
+          <p class="bio">
+            Professor Ju-Yuan Hsieh specializes in criminal policy, with particular focus on juvenile law, restorative justice, and offender treatment. Her teaching portfolio includes substantive criminal law, criminal policy, juvenile law, criminology, and selected readings in Japanese legal literature. She has published widely across Taiwan and Japan, actively engaging in dialogue with legal practitioners.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 學經歷 (CV & Appointments) -->
+    <section class="weebly-section" id="experience">
+      <h2 class="section-header">
+        <span class="zh-view">學經歷</span>
+        <span class="en-view">Appointments & Education</span>
+      </h2>
+
+      <table class="timeline-table">
+        <tr>
+          <td class="year-col">
+            <span class="zh-view">現職</span>
+            <span class="en-view">Position</span>
+          </td>
+          <td class="desc-col">
+            <strong>國立政治大學 法學院</strong>
+            <span>專任教授</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="year-col">
+            <span class="zh-view">學歷</span>
+            <span class="en-view">Education</span>
+          </td>
+          <td class="desc-col">
+            <strong>日本一橋大學 法學研究科</strong>
+            <span>法學博士</span>
+          </td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- 授課課程 Courses -->
+    <section class="weebly-section" id="courses">
+      <h2 class="section-header">
+        <span class="zh-view">授課課程</span>
+        <span class="en-view">Teaching & Courses</span>
+      </h2>
+
+      <h3 class="sub-header">
+        <span class="zh-view">大學部開設</span>
+        <span class="en-view">Undergraduate Courses</span>
+      </h3>
+      <div class="zh-view course-badge-grid">
+        <span class="course-badge">刑事政策</span>
+        <span class="course-badge">少年法</span>
+        <span class="course-badge">犯罪學</span>
+        <span class="course-badge">刑法</span>
+        <span class="course-badge">進階刑法</span>
+      </div>
+      <div class="en-view course-badge-grid">
+        <span class="course-badge">Criminal Policy</span>
+        <span class="course-badge">Juvenile Law</span>
+        <span class="course-badge">Criminology</span>
+        <span class="course-badge">Criminal Law</span>
+        <span class="course-badge">Advanced Criminal Law</span>
+      </div>
+
+      <h3 class="sub-header" style="margin-top: 2rem;">
+        <span class="zh-view">研究所開設</span>
+        <span class="en-view">Graduate Courses</span>
+      </h3>
+      <div class="zh-view course-badge-grid">
+        <span class="course-badge">刑事政策專題研究</span>
+        <span class="course-badge">少年法專題研究</span>
+        <span class="course-badge">犯罪學專題研究</span>
+        <span class="course-badge">犯罪被害人專題研究</span>
+      </div>
+      <div class="en-view course-badge-grid">
+        <span class="course-badge">Seminar on Criminal Policy</span>
+        <span class="course-badge">Seminar on Juvenile Law</span>
+        <span class="course-badge">Seminar on Criminology</span>
+        <span class="course-badge">Seminar on Crime Victims</span>
+      </div>
+    </section>
+
+    <!-- 著作出版 Publications -->
+    <section class="weebly-section" id="publications">
+      <h2 class="section-header">
+        <span class="zh-view">著作與研究出版</span>
+        <span class="en-view">Publications</span>
+      </h2>
+
+      <!-- 專書篇章 -->
+      <h3 class="sub-header">
+        <span class="zh-view">專書篇章 (Book Chapters)</span>
+        <span class="en-view">Book Chapters</span>
+      </h3>
+      <div class="pub-entry">
+        <span class="pub-year">2025.07</span> 謝如媛，〈修復的司法ー修復レンズで犯罪と司法をみる〉，收錄於《刑事政策へのいざない》，頁 101-116，日本：日本評論社。（日語）
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2025.03</span> 謝如媛，〈監獄作業是否為自由刑的刑罰內容──從日本刑法修正談起〉，收錄於《臺灣刑事法新世紀脈動—何賴傑教授六秩晉五榮退祝賀論文集》，頁 789-803，台北：新學林。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2024.11</span> 謝如媛，〈刑事法：10.刑事政策研究成果回顧〉，收錄於《法律學研究成果回顧與社會影響性2001-2020》，頁 185-214，台北：月旦知識庫。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2020.06</span> 謝如媛，〈少年健全成長之概念內涵與法制架構──從日本少年法制近年之動向談起〉，收錄於《主體、理性與人權的彼岸：李茂生教授六秩晉五祝壽論文集》，頁 287-322，台北：台灣銀行股份有限公司受託公益信託刑事學策進基金。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2016.07</span> 謝如媛，〈刑法、犯罪與刑罰〉，收錄於《台灣法制導論》，頁 161-190。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2011.05</span> 謝如媛，〈論美國毒品法庭制度──從懲罰到治療的刑事司法實踐〉，收錄於《刑事法學的新視野》，頁 239-269。
+      </div>
+
+      <!-- 期刊論文 -->
+      <h3 class="sub-header">
+        <span class="zh-view">期刊論文 (Journal Articles)</span>
+        <span class="en-view">Journal Articles</span>
+      </h3>
+      <div class="pub-entry">
+        <span class="pub-year">2024.11</span> 謝如媛，〈修復的司法を考える――修復レンズで犯罪と司法をみる〉，《法学セミナー》，第 838 號，頁 87-94。（日語）
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2024.04</span> 謝如媛，〈被告子女最佳利益作為量刑之首要考慮因素──評最高法院111年度台上字第700號判決〉，《月旦實務選評》，第 4 卷第 4 期，頁 100-111。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2022.12</span> 謝如媛，〈台湾における修復的司法の現状及びその課題〉（中譯：台灣修復式司法的現狀及其課題），《比較法研究》，第 83 號，頁 199-207。（日語）
+        <span class="badge badge-cinii">CiNii</span>
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2022.11</span> 謝如媛，〈修復的司法の法制化および刑事司法との連動 ―台湾における RJ の実践―〉（中譯：修復式司法的法制化及其與刑事司法的連動），《一橋法學》，第 21 卷第 3 號，頁 117-134。（日語）
+        <span class="badge badge-cinii">CiNii</span>
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2022.09</span> 謝如媛、林俊儒，〈多元複合的假釋制度─美國假釋制度的考察與反思〉，《政大法學評論》，第 170 期，頁 1-53。
+        <span class="badge badge-tssci">TSSCI</span>
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2022.05</span> 謝如媛，〈禁止強制工作對國家刑罰權運作界限的意義與反思—從釋字812 號談起〉，《台灣法律人》，第 11 期，頁 42-63。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2018.03</span> 謝如媛，〈少年修復式司法的批判性考察—從少年的最佳利益到利益衡平？〉，《政大法學評論》，第 152 卷，頁 125-186。
+        <span class="badge badge-tssci">TSSCI</span>
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2017.09</span> 謝如媛，〈台湾における仮釈放の動向—過剰収容と社会防衛の挟間に〉，《神戶法學年報》，第 30 卷，頁 67-94。（日語）
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2015.12</span> 謝如媛，〈對日本「刑之一部分緩予執行」制度的觀察與反思〉，《臺大法學論叢》，第 44 卷第 4 期，頁 1887-1944。
+        <span class="badge badge-tssci">TSSCI</span>
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2014.12</span> 謝如媛，〈緩刑的刑事政策意涵：嚴罰趨勢下的寬典？〉，《臺大法學論叢》，第 43 卷第 4 期，頁 1609-1664。
+        <span class="badge badge-tssci">TSSCI</span>
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2013.09</span> 謝如媛，〈當少年被移送於檢察官──少年事件處理法第二七條之相關爭議〉，《月旦法學教室》，第 131 期，頁 39-41。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2012.06</span> 謝如媛，〈業務過失致死傷罪之「附隨業務」──最高法院一百年台上字第四四二四號判決〉，《月旦裁判時報》，第 15 卷，頁 61-72。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2012.03</span> 謝如媛，〈台湾における死刑の執行と再開～これまでとこれから〉，《矯正講座》，第 32 期，頁 49-61。（日語）
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2011.10</span> 謝如媛，〈刑法與倫常──「殺尊親屬罪」判例選讀〉，《月旦法學教室》，第 131 期，頁 96-104。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2011.06</span> 謝如媛，〈犯罪被害人陳述制度之成效－從英國實證研究成果出發〉，《法學新論》，第 30 期，頁 13-34。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2011.01</span> 謝如媛，〈教授之家──過失概念的檢討〉，《月旦法學雜誌》，第 188 期，頁 245-253。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2007.12</span> 謝如媛，〈夢想或現實？由紐西蘭經驗看修復式司法之可能性──以法院轉介之修復式司法方案為中心〉，《成大法學》，第 14 期，頁 121-166。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2007.11</span> 謝如媛，〈美、日民營矯正機構之最新發展狀況與綜合評價〉，《國立中正大學法學集刊》，第 23 期，頁 65-114。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2007.10</span> 謝如媛，〈刑法第二九六條之一買賣質押人口罪之修正初探〉，《月旦法學雜誌》，第 149 期，頁 209-224。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2007.10</span> 謝如媛，〈父母之一方爭奪小孩的行為是否成立略誘罪──評台灣高等法院九十年度上更（一）字第五七五號及其他相關判決〉，《月旦法學雜誌》，第 140 期，頁 205-216。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2006.11</span> 謝如媛，〈刑法規範下的家庭秩序〉，《臺大法學論叢》，第 35 卷第 6 期，頁 291-329。
+        <span class="badge badge-tssci">TSSCI</span>
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2006.09</span> 謝如媛，〈論犯罪被害人在受刑人處遇中的角色〉，《台灣本土法學雜誌》，第 86 期，頁 127-130。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">2005.03</span> 謝如媛，〈修復式司法的現狀與未來〉，《月旦法學雜誌》，第 118 期，頁 41-51。
+      </div>
+
+      <!-- 線上出版 -->
+      <h3 class="sub-header">
+        <span class="zh-view">線上出版 (Online Publications)</span>
+        <span class="en-view">Online Publications</span>
+      </h3>
+      <div class="pub-entry">
+        <span class="pub-year">2011.07</span> 謝如媛，〈犯罪被害人參與少年司法程序之研究〉，司法院電子出版品。
+      </div>
+    </section>
+
+    <!-- 指導論文 Theses -->
+    <section class="weebly-section" id="theses">
+      <h2 class="section-header">
+        <span class="zh-view">指導論文</span>
+        <span class="en-view">Supervised Theses</span>
+      </h2>
+
+      <div class="pub-entry">
+        <span class="pub-year">113學年度</span> 李宇洋，《刑法背信罪之研究：資訊揭露義務與忠實義務之交錯》，國立政治大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">113學年度</span> 方旻淇，《性侵害案件中對質詰問權與傳聞例外的調和》，國立政治大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">113學年度</span> 張子婕，《檢警機關於少年事件之調查與偵查權限》，國立政治大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">113學年度</span> 王郁祺，《論修復式司法之程序保障》，國立政治大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">113學年度</span> 林俊儒，《刑事司法減害的毒品政策─走出病犯體制的旋轉門》，國立政治大學法律學系博士論文。<strong style="color:var(--color-accent); font-weight:600;">（獲2026年台灣法學會論文獎）</strong>
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">111學年度</span> 張馨尹，《觸法少年資訊揭露之界限 —以少年事件處理法第83條及第83條之1為中心》，國立政治大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">110學年度</span> 呂欣恬，《死刑以外，生刑之極－終身刑之研究》，國立政治大學法律科際整合研究所碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">109學年度</span> 胡孟郁，《少年司法與發展心理學及神經科學的交會－以美國聯邦最高法院判決為借鏡》，國立政治大學法律科際整合研究所碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">108學年度</span> 李欣恩，《觸法精神障礙者之監護處分制度》，國立政治大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">108學年度</span> 翁崇翰，《身心障礙非行少年感化教育之研究—以智能障礙者為核心》，國立政治大學法律科際整合研究所碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">106學年度</span> 羅浩瑋，《追求再犯預防的量刑政策及其省思—以緩刑制度為中心》，國立政治大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">106學年度</span> 許嘉菱，《少年間合意性行為之除罪化—以美國法定強暴罪為借鏡》，國立政治大學法律學系碩士論文。<strong style="color:var(--color-accent); font-weight:600;">（獲法務部司法官學院第5屆犯罪防治研究傑出論文獎特優）</strong>
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">106學年度</span> 林俊儒，《毒品法庭的批判性考察》，國立政治大學法律學系碩士論文。<strong style="color:var(--color-accent); font-weight:600;">（獲2018年台灣法學會論文獎、法務部司法官學院第5屆犯罪防治研究傑出論文獎特優）</strong>
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">105學年度</span> 嚴蕙溱，《刑事案件量刑調查之研究 --以英美相關制度為中心》，國立政治大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">105學年度</span> 徐珮玉，《處罰單純持有虛擬兒童色情物之檢討─與兒童權利相關之辯證》，國立政治大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">105學年度</span> 連珮君，《家庭內殺人案件量刑中被害人因素之探討》，國立政治大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">103學年度</span> 楊媖淑，《死刑案件之被害影響陳述 ─以美國法為參照對象》，國立政治大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">103學年度</span> 李元棻，《以特別預防角度探討緩起訴制度》，國立政治大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">103學年度</span> 張蕙，《酒癮者之酒駕再犯防治對策─以社會復歸為中心》，國立政治大學法律學系碩士論文。<strong style="color:var(--color-accent); font-weight:600;">（獲2015年台灣法學會論文獎）</strong>
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">103學年度</span> 潘曉萱，《少年感化教育之理念與實踐》，國立政治大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">103學年度</span> 吳思宜，《家庭暴力罪的拘捕與起訴—從保護被害人的角度出發》，國立政治大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">101學年度</span> 黃聿斐，《從精神醫學觀點論殺直系血親尊親屬罪》，國立政治大學法律學系在職專班碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">97學年度</span> 張景翔，《美國監獄民營化之研究》，國立中正大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">97學年度</span> 周暉念，《假釋決定之要件、程序與救濟制度之探討》，國立中正大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">97學年度</span> 王珽顥，《保安處分之危險性概念》，國立中正大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">96學年度</span> 許家華，《由生育自主權重新檢視自願墮胎行為之相關法規範》，國立中正大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">96學年度</span> 林儹紘，《從社會復歸觀點論長刑期之受刑人處遇》，國立中正大學法律學系碩士論文。
+      </div>
+      <div class="pub-entry">
+        <span class="pub-year">95學年度</span> 馮昌偉，《論國際法上之種族隔離罪及其處理模式—以南非共和國為中心》，國立中正大學法律學系碩士論文。
+      </div>
+    </section>
+
+    <!-- 聯絡資訊 Contact Information -->
+    <section class="weebly-section" id="contact">
+      <h2 class="section-header">
+        <span class="zh-view">聯絡資訊</span>
+        <span class="en-view">Contact Information</span>
+      </h2>
+      <div class="contact-card-container">
+        <div class="contact-card">
+          <h4>服務單位</h4>
+          <p>
+            <strong>國立政治大學 法學院</strong><br>
+            College of Law, National Chengchi University
+          </p>
+        </div>
+        <div class="contact-card">
+          <h4>研究室與聯絡電話</h4>
+          <p>
+            研究室：法學院館8樓 770820研究室<br>
+            公務電話：02-2939-3091 轉 82820
+          </p>
+        </div>
+        <div class="contact-card">
+          <h4>電子信箱</h4>
+          <p>
+            <a href="mailto:lawhjy@nccu.edu.tw">lawhjy@nccu.edu.tw</a>
+          </p>
+        </div>
+        <div class="contact-card">
+          <h4>聯絡地址</h4>
+          <p>
+            116011 台北市文山區指南路二段 64 號 法學院館8樓770820研究室<br>
+            Room 770820, 8F, College of Law Building, No. 64, Sec. 2, Zhinan Rd., Wenshan Dist., Taipei 116011, Taiwan
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- 頁尾 -->
+  <footer class="weebly-footer">
+    <p>&copy; 2026 謝如媛 Ju-Yuan Hsieh. All rights reserved.</p>
+  </footer>
+
+  <script>
+    let isEnglish = false;
+    function toggleLanguage() {
+      isEnglish = !isEnglish;
+      const zhElements = document.querySelectorAll('.zh-view');
+      const enElements = document.querySelectorAll('.en-view');
+      const langBtn = document.querySelector('.lang-toggle-btn');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      if (isEnglish) {
+        zhElements.forEach(el => el.style.display = 'none');
+        enElements.forEach(el => el.style.display = 'block');
+        langBtn.textContent = '切換至中文';
+        navLinks.forEach(el => el.textContent = el.getAttribute('data-en'));
+      } else {
+        zhElements.forEach(el => el.style.display = 'block');
+        enElements.forEach(el => el.style.display = 'none');
+        langBtn.textContent = 'Switch to English';
+        navLinks.forEach(el => el.textContent = el.getAttribute('data-zh'));
+      }
+    }
+  </script>
+</body>
+</html>
